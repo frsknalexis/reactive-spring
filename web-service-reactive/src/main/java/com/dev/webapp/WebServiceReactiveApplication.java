@@ -1,0 +1,13 @@
+package com.dev.webapp;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class WebServiceReactiveApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(WebServiceReactiveApplication.class, args);
+	}
+
+}
