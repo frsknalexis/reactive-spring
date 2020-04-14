@@ -1,0 +1,19 @@
+server:
+  port: 5071
+
+spring:
+  application:
+    name: cliente-web-service
+  data:
+    mongodb:
+      #authentication-database: admin
+      database: gestfid
+      host: localhost
+      #password: 1234
+      port: 27017
+      #username: dev_alexis
+
+
+logging:
+  level:
+    org.springframework.data.mongodb.core.ReactiveMongoTemplate: debug
