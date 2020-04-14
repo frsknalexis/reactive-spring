@@ -34,6 +34,11 @@ public class ClienteController {
 	@Qualifier("clienteService")
 	private ClienteService clienteService;
 	
+	@GetMapping(value = "/auth", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Mono<String> checkBasicAuth() {
+		return Mono.just("Authentication OK");
+	}
+	
 	@PostMapping(value = "/insert", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Mono<Cliente>> insertCliente(@RequestBody Cliente cliente) {
 		Mono<Cliente> Monocliente = clienteService.save(cliente);
