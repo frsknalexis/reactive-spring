@@ -1,0 +1,16 @@
+#configuration application
+server:
+  port: 8090
+
+spring:
+  application:
+    name: user-web-service
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: gestfid
+
+logging:
+  level:
+    org.springframework.data.mongodb.core.ReactiveMongoTemplate: debug
