@@ -18,6 +18,7 @@ public class UsuarioRouter {
 				.andRoute(RequestPredicates.GET("/api/v1/usuario/{id}"), handler::findClienteById)
 				.andRoute(RequestPredicates.POST("/api/v1/usuario"), handler::createUser)
 				.andRoute(RequestPredicates.PUT("/api/v1/usuario/{id}"), handler::updateUsuario)
-				.andRoute(RequestPredicates.DELETE("/api/v1/usuario/{id}"), handler::deleteUsuario);
+				.andRoute(RequestPredicates.DELETE("/api/v1/usuario/{id}"), handler::deleteUsuario)
+				.andRoute(RequestPredicates.GET("/api/v1/usuario/estado/{estado}"), handler::findUsuariosByEstado);
 	}
 }

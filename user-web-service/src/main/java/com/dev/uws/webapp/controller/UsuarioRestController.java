@@ -97,7 +97,7 @@ public class UsuarioRestController {
 				.switchIfEmpty(Mono.just(new ResponseEntity<Void>(HttpStatus.NOT_FOUND)));
 	}
 	
-	@GetMapping(value = "estado/{estado}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/estado/{estado}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Mono<ResponseEntity<Flux<Usuario>>> findUsuarioByEstado(@PathVariable(value = "estado") Boolean estado) {
 		Flux<Usuario> usuarioFlux = usuarioService.findByEstado(estado);
 		return Mono.just(ResponseEntity.ok()

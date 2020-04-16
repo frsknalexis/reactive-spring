@@ -4,11 +4,13 @@ import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.dev.uws.webapp.document.Usuario;
 import com.dev.uws.webapp.service.UsuarioService;
@@ -89,5 +91,13 @@ public class UsuarioHandler {
 							.then(ServerResponse.noContent().build());
 				})
 				.switchIfEmpty(ServerResponse.notFound().build());
+	}
+	
+	public Mono<ServerResponse> findUsuariosByEstado(ServerRequest request) {
+		String estado = request.pathVariable("estado");
+		Flux<Usuario> usuarioFlux = usuarioService.findByEstado(Boolean.valueOf(estado));
+		return ServerResponse.ok()
+				.contentType(MediaType.APPLICATION_JSON)
+				.body(usuarioFlux, Usuario.class);
 	}
 }
