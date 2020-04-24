@@ -50,7 +50,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public Mono<Void> deleteUsuarioById(String id) {
-		Mono<Usuario> monoUsuario = usuarioRepository.findById(id);
+		Mono<Usuario> monoUsuario = Mono.empty();
+		if (!id.isEmpty() && id != null) {
+			monoUsuario = usuarioRepository.findById(id);
+		};
 		return monoUsuario.flatMap((usuario) -> {
 			return usuarioRepository.delete(usuario);
 		});
